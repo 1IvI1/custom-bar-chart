@@ -1,0 +1,22 @@
+.bar-chart {
+  font-family: Helvetica, sans-serif;
+  &-svg,
+  &-backgroung {
+    // width: 600px;
+    // height: 400px;
+  }
+  &-line {
+    &-vertical {
+      &-container {
+        transform: rotateZ(180deg) translate(-100px, -380px);
+      }
+    }
+    &-horizontal {
+      &-values {
+        &-text {
+          font: 9px sans-serif;
+        }
+      }
+    }
+  }
+}

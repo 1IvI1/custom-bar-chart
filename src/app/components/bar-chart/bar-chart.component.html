@@ -1,0 +1,69 @@
+<div class="bar-chart">
+  <svg
+    class="bar-chart-svg"
+    [ngStyle]="svgStyleObj"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g>
+      <rect
+        x="0"
+        y="0"
+        class="bar-chart-backgroung"
+        fill="#fafafa"
+        [ngStyle]="bgStyleObj"
+      />
+    </g>
+    <g>
+      <!-- <line class="bar-chart-line-vertical" x1="50" y1="20" x2="50" y2="380" stroke="#000" /> -->
+      <rect width="1" [ngStyle]="setLeftLineStyles()" />
+      <rect [ngStyle]="setrightLineStyles()"/>
+      <!-- <line
+        class="bar-chart-line-horizontal"
+        x1="20"
+        y1="360"
+        x2="580"
+        y2="360"
+        stroke="#000"
+      /> -->
+    </g>
+    <g
+      class="bar-chart-line-vertical-container"
+      *ngFor="let i of verticalLineValues"
+    >
+      <!-- <circle
+        class="bar-chart-line-vertical-values-dot"
+        r="5"
+        fill="#000"
+        [ngStyle]="setVerticalDots(i)"
+      /> -->
+      <text
+        x="10"
+        [ngStyle]="setVerticalTextStyles(i)"
+        dy=".35em"
+      >
+        {{ i.value }}
+      </text>
+    </g>
+    <g *ngFor="let i of horizontalLineValues">
+      <!-- <circle
+        class="bar-chart-line-horizontal-values-dot"
+        r="5"
+        fill="#000"
+        [ngStyle]="setHorizontalDots(i)"
+      /> -->
+      <text
+        class="bar-chart-line-horizontal-values-text"
+        x="10"
+        [ngStyle]="{ transform: customHorizontalTranslate(i.pos) }"
+        dy=".35em"
+      >
+        {{ i.value }}
+      </text>
+      <rect
+        [ngStyle]="setBarStyles(i)"
+        width="20"
+        fill="#000"
+      />
+    </g>
+  </svg>
+</div>
